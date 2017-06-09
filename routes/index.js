@@ -26,7 +26,11 @@ router.get('/test', (req, res, next) => {
                 tempObj.houseInfo = item.find('.address').find('.houseInfo').text();
                 tempObj.areaUrl = item.find('.positionInfo').find('a').attr('href');
                 tempObj.area = item.find('.positionInfo').find('a').text();
-
+                tempObj.totalPrice = item.find('.totalPrice').find('span').text();
+                tempObj.unitPrice = item.find('.unitPrice').attr('data-price');
+                tempObj.id = item.find('.unitPrice').attr('data-hid');
+                tempObj.xiaoquId = item.find('.unitPrice').attr('data-rid');
+                tempObj.img = item.find('.img').find('img').attr('data-original')
                 arr.push(tempObj);
             });
             console.log(arr);

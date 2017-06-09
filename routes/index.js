@@ -1,5 +1,7 @@
 const express = require('express');
 const request = require('request');
+const cheerio = require('cheerio');
+
 const router = express.Router();
 
 router.get('/test', (req, res, next) => {
@@ -11,6 +13,23 @@ router.get('/test', (req, res, next) => {
     }, (err, response, body) => {
         if (!err && response.statusCode == 200) {
             res.send(body);
+            let arr = [];
+            let $ = cheerio.load(body);
+            let list = $('.sellListContent li');
+            list.map((index, temp) => {
+                let tempObj = {};
+                let item = list.eq(index);
+                tempObj.url = item.find('.title').find('a').attr('href');
+                tempObj.name = item.find('.title').find('a').text();
+                tempObj.xiaoqu = item.find('.address').find('a').text();
+                tempObj.xiaoquUrl = item.find('.address').find('a').attr('href');
+                tempObj.houseInfo = item.find('.address').find('.houseInfo').text();
+                tempObj.areaUrl = item.find('.positionInfo').find('a').attr('href');
+                tempObj.area = item.find('.positionInfo').find('a').text();
+
+                arr.push(tempObj);
+            });
+            console.log(arr);
         }
     });
 });

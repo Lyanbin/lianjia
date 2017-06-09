@@ -5,10 +5,6 @@ const config = require('./config');
 let app = express();
 // 监听端口，启动程序
 // 
-console.log(config);
-
-
-console.log(router);
 app.use('/', router);
 
 

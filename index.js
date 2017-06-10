@@ -11,4 +11,6 @@ app.listen(config.port, function () {
 });
 
 
-parser();
+for (let i = 1; i < 20; i++) {
+    parser(i);
+}

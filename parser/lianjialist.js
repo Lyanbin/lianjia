@@ -1,10 +1,25 @@
 const request = require('request');
 const cheerio = require('cheerio');
 
-
-function parserList() {
+function parserData($object) {
+    let tempObj = {};
+    tempObj.url = $object.find('.title').find('a').attr('href');
+    tempObj.name = $object.find('.title').find('a').text();
+    tempObj.xiaoqu = $object.find('.address').find('a').text();
+    tempObj.xiaoquUrl = $object.find('.address').find('a').attr('href');
+    tempObj.houseInfo = $object.find('.address').find('.houseInfo').text();
+    tempObj.areaUrl = $object.find('.positionInfo').find('a').attr('href');
+    tempObj.area = $object.find('.positionInfo').find('a').text();
+    tempObj.totalPrice = $object.find('.totalPrice').find('span').text();
+    tempObj.unitPrice = $object.find('.unitPrice').attr('data-price');
+    tempObj.id = $object.find('.unitPrice').attr('data-hid');
+    tempObj.xiaoquId = $object.find('.unitPrice').attr('data-rid');
+    tempObj.img = $object.find('.img').find('img').attr('data-original');
+    return tempObj;
+}
+function parserList(page) {
     request({
-           url: 'http://bj.lianjia.com/ershoufang/pg1/',
+           url: `http://bj.lianjia.com/ershoufang/pg${page}/`,
            headers: {
                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.3 (KHTML, like Gecko) Chrome/55.0.2883.9 Safari/537.3'
            }
@@ -14,25 +29,15 @@ function parserList() {
              let $ = cheerio.load(body);
              let list = $('.sellListContent li');
              list.map((index, temp) => {
-                 let tempObj = {};
                  let item = list.eq(index);
-                 tempObj.url = item.find('.title').find('a').attr('href');
-                 tempObj.name = item.find('.title').find('a').text();
-                 tempObj.xiaoqu = item.find('.address').find('a').text();
-                 tempObj.xiaoquUrl = item.find('.address').find('a').attr('href');
-                 tempObj.houseInfo = item.find('.address').find('.houseInfo').text();
-                 tempObj.areaUrl = item.find('.positionInfo').find('a').attr('href');
-                 tempObj.area = item.find('.positionInfo').find('a').text();
-                 tempObj.totalPrice = item.find('.totalPrice').find('span').text();
-                 tempObj.unitPrice = item.find('.unitPrice').attr('data-price');
-                 tempObj.id = item.find('.unitPrice').attr('data-hid');
-                 tempObj.xiaoquId = item.find('.unitPrice').attr('data-rid');
-                 tempObj.img = item.find('.img').find('img').attr('data-original')
+                 let tempObj = parserData(item);
                  arr.push(tempObj);
              });
-             console.log(arr);
+             console.log(`第${page}页抓取完毕，一共获取${arr.length}条数据！`);
          } else {
-             console.log(123);
+             console.log(`第${page}页抓取失败！！`);
+             console.log(err);
+             console.log(response.statusCode);
          }
     });
 }

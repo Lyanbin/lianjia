@@ -35,9 +35,7 @@ function parserList(page) {
              });
              console.log(`第${page}页抓取完毕，一共获取${arr.length}条数据！`);
          } else {
-             console.log(`第${page}页抓取失败！！`);
-             console.log(err);
-             console.log(response.statusCode);
+             console.log(`第${page}页抓取失败！错误信息${err.Error}`);
          }
     });
 }

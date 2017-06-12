@@ -2,6 +2,7 @@ const express = require('express');
 const router = require('./routes');
 const config = require('./config');
 const parser = require('./parser/lianjialist');
+const getProxy = require('./parser/proxy');
 let app = express();
 // 监听端口，启动程序
 app.use('/', router);
@@ -11,6 +12,7 @@ app.listen(config.port, function () {
 });
 
 
-for (let i = 1; i < 20; i++) {
-    parser(i);
-}
+// for (let i = 1; i < 20; i++) {
+//     parser(i);
+// }
+getProxy();

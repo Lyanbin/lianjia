@@ -15,4 +15,16 @@ app.listen(config.port, function () {
 // for (let i = 1; i < 20; i++) {
 //     parser(i);
 // }
+const http = require('http');
+async function ab() {
+    await http.get('http://www.baidu.com/', (res) => {
+        console.log('1');
+
+    });
+
+    console.log('2');
+}
+ab();
+
+console.log('3');
 getProxy();

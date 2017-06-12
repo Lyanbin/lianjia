@@ -15,6 +15,7 @@ function getProxy() {
              }
          } else {
              console.log(`代理获取失败！`);
+             return false;
          }
     });
 }

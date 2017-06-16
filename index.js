@@ -17,14 +17,11 @@ app.listen(config.port, function () {
 // }
 const http = require('http');
 async function ab() {
-    await http.get('http://www.baidu.com/', (res) => {
-        console.log('1');
-
-    });
-
-    console.log('2');
+    //这里的关键是await后面要跟一个Promise
+    let ips = await getProxy();
+    let ipNum = ips.length;
+    for (let i = 1; i < 300; i++) {
+        await parser(i, ips[i % ipNum]);
+    }
 }
 ab();
-
-console.log('3');
-getProxy();

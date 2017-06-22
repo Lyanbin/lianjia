@@ -4,6 +4,7 @@
   "description": "��T\u0000h\u0000i\u0000s\u0000 \u0000i\u0000s\u0000 \u0000a\u0000 \u0000R\u0000E\u0000A\u0000D\u0000M\u0000E\u0000.\u0000m\u0000d\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --config webpack.config.js --progress --colors --display-modules --display-reasons --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,10 @@
   },
   "homepage": "https://github.com/Lyanbin/lianjia#readme",
   "dependencies": {
+    "babel-loader": "^7.1.0",
     "cheerio": "^1.0.0-rc.1",
     "express": "^4.15.3",
+    "html-webpack-plugin": "^2.28.0",
     "react": "^15.6.1",
     "request": "^2.81.0",
     "webpack": "^3.0.0"

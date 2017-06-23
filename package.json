@@ -4,7 +4,8 @@
   "description": "Noing",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node index.js",
+    "begin": "babel-node index.js",
+    "dev": "webpack --config webpack.config.js --progress --colors --display-modules --display-reasons --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,10 +19,14 @@
   },
   "homepage": "https://github.com/Lyanbin/lianjia#readme",
   "dependencies": {
+    "babel-loader": "^7.1.0",
     "cheerio": "^1.0.0-rc.1",
     "express": "^4.15.3",
     "mongoose": "^4.10.8",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "html-webpack-plugin": "^2.28.0",
+    "react": "^15.6.1",
+    "webpack": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

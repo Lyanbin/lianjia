@@ -1,9 +1,10 @@
 {
   "name": "lianjia",
   "version": "1.0.0",
-  "description": "��T\u0000h\u0000i\u0000s\u0000 \u0000i\u0000s\u0000 \u0000a\u0000 \u0000R\u0000E\u0000A\u0000D\u0000M\u0000E\u0000.\u0000m\u0000d\u0000\r\u0000 \u0000",
+  "description": "Noing",
   "main": "index.js",
   "scripts": {
+    "dev": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
     "express": "^4.15.3",
+    "mongoose": "^4.10.8",
     "request": "^2.81.0"
   },
   "devDependencies": {

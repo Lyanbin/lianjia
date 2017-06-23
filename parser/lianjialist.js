@@ -1,5 +1,21 @@
 const request = require('request');
 const cheerio = require('cheerio');
+const mongoose = require('mongoose');
+
+// function connectMongo() {
+//     mongoose.connect('mongodb://localhost/lybtest');
+//     let Schema = mongoose.Schema,
+//     ObjectId = Schema.ObjectId;
+//
+//     let BlogPost = new Schema({
+//         author    : ObjectId,
+//         title     : String,
+//         body      : String,
+//         date      : Date
+//     });
+//     console.log(BlogPost);
+//
+// }
 
 function _parserData($object) {
     let tempObj = {};

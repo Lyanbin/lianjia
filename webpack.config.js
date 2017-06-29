@@ -5,7 +5,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = function () {
     return {
         entry: {
-            'index': ['./lib/index.js']
+            'index': ['./lib/index.jsx']
         },
         output: {
             path: path.join(__dirname, 'dist'),
@@ -15,12 +15,12 @@ module.exports = function () {
         module: {
             rules: [
                 {
-                    test: /\.js$/,
+                    test: /\.jsx?$/,
                     exclude: path.join(__dirname, 'node_modules'),
                     include: path.join(__dirname, 'lib'),
                     loader: 'babel-loader',
                     query: {
-                        presets: ['env']
+                        presets: ['env', 'react']
                     }
                 },
                 // {

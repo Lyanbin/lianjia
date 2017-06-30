@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 
 const render = Component => {
     ReactDOM.render(
-        <p>gogogogogo</p>,
+        <p>i am react</p>,
         document.getElementById('root')
     )
 }
